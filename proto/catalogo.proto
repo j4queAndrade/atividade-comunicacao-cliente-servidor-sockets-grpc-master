@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+service CatalogoService {
+    rpc ConsultarNome(ConsultaNomeRequest) returns (ProdutoResponse);
+    rpc ConsultarPreco(ConsultaPrecoRequest) returns (ProdutosResponse);
+    rpc AtualizarEstoque(AtualizarEstoqueRequest) returns (AtualizarEstoqueResponse);
+}
+
+message ConsultaNomeRequest {
+    string nome = 1;
+}
+
+message ProdutoResponse {
+    string nome = 1;
+    double preco = 2;
+    int32 quantidade = 3;
+    string mensagem = 4;
+}
+
+message ConsultaPrecoRequest {
+    double precoMaximo = 1;
+}
+
+message ProdutosResponse {
+    repeated ProdutoResponse produtos = 1;
+}
+
+message AtualizarEstoqueRequest {
+    string nome = 1;
+    int32 quantidade = 2;
+}
+
+message AtualizarEstoqueResponse {
+    string nome = 1;
+    double preco = 2;
+    int32 quantidade = 3;
+    string mensagem = 4;
+}
